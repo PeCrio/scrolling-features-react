@@ -39,40 +39,40 @@ export const FeatureItem: React.FC<Props> = ({
   return (
     <div
       id="feature-item"
-      className="fsr-flex lg:fsr-gap-32 lg:fsr-flex-row fsr-flex-col fsr-group last:lg:fsr-h-auto fsr-relative fsr-isolate"
+      className="sfr-flex lg:sfr-gap-32 lg:sfr-flex-row sfr-flex-col sfr-group last:lg:sfr-h-auto sfr-relative sfr-isolate"
       data-feature-id={feature.id}
       ref={feature.ref}
     >
       {/* Mobile Line follower */}
       <div
         className={`${
-          isIntersecting ? "fsr-h-full" : "fsr-h-0"
-        } fsr-w-[2px] fsr-translate-x-[-0.5px] fsr-z-10 fsr-absolute fsr-top-0 fsr-bg-blue-600 fsr-left-0 fsr-block lg:fsr-hidden fsr-transition fsr-origin-top fsr-transform fsr-duration-700`}
+          isIntersecting ? "sfr-h-full" : "sfr-h-0"
+        } sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-z-10 sfr-absolute sfr-top-0 sfr-bg-blue-600 sfr-left-0 sfr-block lg:sfr-hidden sfr-transition sfr-origin-top sfr-transform sfr-duration-700`}
       ></div>
       {/* Bullet background */}
-      <div className="fsr-w-4 fsr-h-7 fsr-z-10 fsr-bg-white fsr-scale-y-150 fsr-absolute fsr-left-0 lg:fsr-left-[50%] -fsr-translate-x-2 fsr-translate-y-[-0.4375rem]"></div>
+      <div className="sfr-w-4 sfr-h-7 sfr-z-10 sfr-bg-white sfr-scale-y-150 sfr-absolute sfr-left-0 lg:sfr-left-[50%] -sfr-translate-x-2 sfr-translate-y-[-0.4375rem]"></div>
       {/* Bullet point */}
       <div
         className={`${
           isIntersecting
-            ? " fsr-ring-blue-500 fsr-ring  fsr-bg-blue-500"
-            : " fsr-bg-gray-300"
-        } fsr-transition fsr-duration-300 fsr-w-4 fsr-h-4 fsr-z-10 -fsr-translate-x-2 fsr-absolute fsr-left-0 lg:fsr-left-[50%] fsr-rounded-full fsr-border-2 fsr-border-white`}
+            ? " sfr-ring-blue-500 sfr-ring  sfr-bg-blue-500"
+            : " sfr-bg-gray-300"
+        } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-z-10 -sfr-translate-x-2 sfr-absolute sfr-left-0 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white`}
       ></div>
 
       {/* Image */}
-      <div className="fsr-flex-1 fsr-w-full fsr-order-2 lg:fsr-order-1">
+      <div className="sfr-flex-1 sfr-w-full sfr-order-2 lg:sfr-order-1">
         <div
           className={`
-          fsr-transition fsr-duration-300 lg:-fsr-mb-96 fsr-sticky fsr-top-64 group-last:fsr-mb-0 fsr-z-20 fsr-ml-6 lg:fsr-ml-0 fsr-mb-16
+          sfr-transition sfr-duration-300 lg:-sfr-mb-96 sfr-sticky sfr-top-64 group-last:sfr-mb-0 sfr-z-20 sfr-ml-6 lg:sfr-ml-0 sfr-mb-16
           ${
             isIntersecting
-              ? "fsr-opacity-100 fsr-scale-100"
-              : "lg:fsr-opacity-0 lg:fsr-scale-50"
+              ? "sfr-opacity-100 sfr-scale-100"
+              : "lg:sfr-opacity-0 lg:sfr-scale-50"
           }  
           ${
             !feature.customPicture &&
-            "fsr-bg-gray-50 fsr-border fsr-border-gray-200 fsr-p-8 fsr-rounded-md fsr-flex fsr-justify-center fsr-items-start"
+            "sfr-bg-gray-50 sfr-border sfr-border-gray-200 sfr-p-8 sfr-rounded-md sfr-flex sfr-justify-center sfr-items-start"
           }
           `}
         >
@@ -80,16 +80,16 @@ export const FeatureItem: React.FC<Props> = ({
             feature.customPicture({ isIntersecting })
           ) : (
             <img
-              className="fsr-w-48 fsr-object-contain lg:fsr-w-64"
+              className="sfr-w-48 sfr-object-contain lg:sfr-w-64"
               src={feature.imageUrl}
             />
           )}
         </div>
       </div>
       {/* Info */}
-      <div className="fsr-flex-1 fsr-w-full fsr-self-stretch fsr-order-1 lg:fsr-order-2 fsr-text-left">
-        <div className="fsr-h-full">
-          <div className="fsr-flex-1 fsr-h-full fsr-ml-6 lg:fsr-pl-0">
+      <div className="sfr-flex-1 sfr-w-full sfr-self-stretch sfr-order-1 lg:sfr-order-2 sfr-text-left">
+        <div className="sfr-h-full">
+          <div className="sfr-flex-1 sfr-h-full sfr-ml-6 lg:sfr-pl-0">
             {feature.customDescription ? (
               feature.customDescription({ isIntersecting })
             ) : (
@@ -97,8 +97,8 @@ export const FeatureItem: React.FC<Props> = ({
                 {/* Title */}
                 <h4
                   className={`${
-                    isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
-                  } fsr-transition fsr-duration-300 fsr-text-2xl lg:fsr-text-3xl -fsr-mt-3`}
+                    isIntersecting ? "sfr-text-blue-600" : "sfr-text-gray-300"
+                  } sfr-transition sfr-duration-300 sfr-text-2xl lg:sfr-text-3xl -sfr-mt-3`}
                   ref={feature.ref}
                   id={feature.id}
                 >
@@ -107,19 +107,19 @@ export const FeatureItem: React.FC<Props> = ({
                 {/* Description */}
                 <p
                   className={`${
-                    isIntersecting ? "fsr-text-gray-600" : "fsr-text-gray-300"
-                  } fsr-transition fsr-duration-300 fsr-mt-4`}
+                    isIntersecting ? "sfr-text-gray-600" : "sfr-text-gray-300"
+                  } sfr-transition sfr-duration-300 sfr-mt-4`}
                 >
                   {feature.description}
                 </p>
                 {/* Link */}
                 <button
                   className={`${
-                    isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
-                  } fsr-text-md fsr-font-medium fsr-mt-4 fsr-mb-8 lg:fsr-mb-32 lg:group-last:fsr-mb-0 fsr-transition fsr-duration-300`}
+                    isIntersecting ? "sfr-text-blue-600" : "sfr-text-gray-300"
+                  } sfr-text-md sfr-font-medium sfr-mt-4 sfr-mb-8 lg:sfr-mb-32 lg:group-last:sfr-mb-0 sfr-transition sfr-duration-300`}
                 >
                   Learn more
-                  <span className="fsr-ml-1">&gt;</span>
+                  <span className="sfr-ml-1">&gt;</span>
                 </button>
               </>
             )}

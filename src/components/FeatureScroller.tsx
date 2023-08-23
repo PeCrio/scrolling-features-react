@@ -58,39 +58,39 @@ export const FeatureScroller: React.FC<Props> = ({
   }, []);
 
   return (
-    <div className="fsr-relative fsr-isolate lg:-fsr-mt-80">
+    <div className="sfr-relative sfr-isolate lg:-sfr-mt-80">
       {/* Line divider */}
       <div
-        className="fsr-w-[2px] fsr-translate-x-[-0.5px] fsr-h-full -fsr-z-10 fsr-absolute fsr-from-gray-200 fsr-left-0 lg:fsr-left-[50%] fsr-bg-repeat-y"
+        className="sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-h-full -sfr-z-10 sfr-absolute sfr-from-gray-200 sfr-left-0 lg:sfr-left-[50%] sfr-bg-repeat-y"
         style={{
           backgroundImage: `linear-gradient(
           180deg,
           transparent,
           transparent 50%,
-          var(--fsr-gradient-from) 50%,
-          var(--fsr-gradient-from) 100%
+          var(--sfr-gradient-from) 50%,
+          var(--sfr-gradient-from) 100%
         )`,
           backgroundSize: "2px 10px",
         }}
       ></div>
       {/* Top line follower mask */}
-      <div className="fsr-bg-gradient-to-b fsr-from-white fsr-via-white fsr-to-transparent fsr-via-[85%] fsr-top-0 fsr-inset-x-0 fsr-w-full fsr-h-64 fsr-absolute"></div>
+      <div className="sfr-bg-gradient-to-b sfr-from-white sfr-via-white sfr-to-transparent sfr-via-[85%] sfr-top-0 sfr-inset-x-0 sfr-w-full sfr-h-64 sfr-absolute"></div>
       {/* Line follower */}
-      <div className="fsr-w-[2px] fsr-translate-x-[-0.5px] fsr-h-64 -fsr-z-10 fsr-sticky fsr-top-0 fsr-bg-blue-600 fsr-left-4 lg:fsr-left-[50%] fsr-hidden lg:fsr-block"></div>
+      <div className="sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-h-64 -sfr-z-10 sfr-sticky sfr-top-0 sfr-bg-blue-600 sfr-left-4 lg:sfr-left-[50%] sfr-hidden lg:sfr-block"></div>
       {/* Bullet face */}
       <div
         ref={bulletFaceRef}
-        // className="fsr-transition fsr-duration-300 fsr-w-7 fsr-h-7 fsr-z-20 fsr-translate-x-[-0.875rem] fsr-sticky fsr-top-[37%] lg:fsr-top-64 fsr-left-4 lg:fsr-left-[50%] fsr-rounded-full fsr-border-2 fsr-border-white fsr-ring-blue-500 fsr-ring fsr-bg-blue-500 lg:fsr-block fsr-invisible lg:fsr-visible"
-        className="fsr-transition fsr-duration-300 fsr-w-7 fsr-h-7 fsr-z-20 fsr-translate-x-[-0.875rem] fsr-sticky fsr-top-[37%] lg:fsr-top-64 fsr-left-4 lg:fsr-left-[50%] fsr-rounded-full fsr-border-2 fsr-border-white fsr-ring-blue-500 fsr-ring fsr-bg-blue-500 lg:fsr-block fsr-invisible lg:fsr-visible"
+        // className="sfr-transition sfr-duration-300 sfr-w-7 sfr-h-7 sfr-z-20 sfr-translate-x-[-0.875rem] sfr-sticky sfr-top-[37%] lg:sfr-top-64 sfr-left-4 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring sfr-bg-blue-500 lg:sfr-block sfr-invisible lg:sfr-visible"
+        className="sfr-transition sfr-duration-300 sfr-w-7 sfr-h-7 sfr-z-20 sfr-translate-x-[-0.875rem] sfr-sticky sfr-top-[37%] lg:sfr-top-64 sfr-left-4 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring sfr-bg-blue-500 lg:sfr-block sfr-invisible lg:sfr-visible"
       >
         <div
           id="ball"
-          // className="fsr-w-full fsr-h-full fsr-bg-blue-900 fsr-rounded-full"
+          // className="sfr-w-full sfr-h-full sfr-bg-blue-900 sfr-rounded-full"
         ></div>
-        {/* <div className="fsr-w-full fsr-h-full fsr-bg-blue-900 fsr-rounded-full"></div> */}
+        {/* <div className="sfr-w-full sfr-h-full sfr-bg-blue-900 sfr-rounded-full"></div> */}
       </div>
       {/* Feature listing */}
-      <div className="-fsr-mt-4">
+      <div className="-sfr-mt-4">
         {featureList &&
           featureList.map((feature) => (
             <FeatureItem

@@ -4,32 +4,32 @@ import { FeatureScroller } from "./components/FeatureScroller";
 function App() {
   return (
     <div className="App">
-      <h1 className="fsr-text-gray-600 fsr-text-5xl fsr-mt-32 fsr-mb-32 fsr-relative fsr-z-20 fsr-font-bold fsr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-mb-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
         Feature listing preview
       </h1>
-      <div className="fsr-mt-64 fsr-px-4 md:fsr-px-8 lg:fsr-px-8">
+      <div className="sfr-mt-64 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <FeatureScroller
           features={[
             {
               id: "6",
               customDescription: ({ isIntersecting }) => (
-                <div className="fsr-bg-blue-50 fsr-p-4 fsr-rounded fsr-mb-32 ">
-                  <h3 className="fsr-text-2xl fsr-font-semibold">
+                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded sfr-mb-32 ">
+                  <h3 className="sfr-text-2xl sfr-font-semibold">
                     Custom description {isIntersecting ? "active" : "inactive"}
                   </h3>
-                  <p className="fsr-text-md fsr-text-gray-500">
+                  <p className="sfr-text-md sfr-text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Itaque, commodi velit reprehenderit ea eveniet voluptatibus
                     repellat ipsum possimus incidunt ratione natus sed sint
                     labore quasi nihil perspiciatis placeat dignissimos fugit.
                   </p>
-                  <button className="fsr-mt-4 fsr-px-2 fsr-py-1 fsr-rounded fsr-bg-purple-700 fsr-text-white ">
+                  <button className="sfr-mt-4 sfr-px-2 sfr-py-1 sfr-rounded sfr-bg-purple-700 sfr-text-white ">
                     Custom button
                   </button>
                 </div>
               ),
               customPicture: ({ isIntersecting }) => (
-                <div className="fsr-bg-pink-50 fsr-py-12">
+                <div className="sfr-bg-pink-50 sfr-py-12">
                   Custom picture {isIntersecting ? "seen" : "invisible"}
                 </div>
               ),
