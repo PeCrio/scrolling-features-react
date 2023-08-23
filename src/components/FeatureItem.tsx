@@ -1,11 +1,30 @@
 import React from "react";
 
-export type AdFeature = {
+type BaseAdFeature = {
   id: string;
+};
+
+type BasicAdFeature = BaseAdFeature & {
+  customPicture?: never;
+  customDescription?: never;
   title: string;
   description: string;
   imageUrl: string;
 };
+
+type CustomAdFeatureOptions = {
+  isIntersecting: boolean;
+};
+
+type CustomAdFeature = BaseAdFeature & {
+  customPicture: (options: CustomAdFeatureOptions) => JSX.Element;
+  customDescription: (options: CustomAdFeatureOptions) => JSX.Element;
+  title?: never;
+  description?: never;
+  imageUrl?: never;
+};
+
+export type AdFeature = BasicAdFeature | CustomAdFeature;
 
 type Props = {
   intersectingEntries?: Record<string, boolean>;
@@ -15,7 +34,7 @@ export const FeatureItem: React.FC<Props> = ({
   intersectingEntries,
   feature,
 }) => {
-  const isIntersecting = intersectingEntries?.[feature.id];
+  const isIntersecting = !!intersectingEntries?.[feature.id];
 
   return (
     <div
@@ -44,49 +63,66 @@ export const FeatureItem: React.FC<Props> = ({
       {/* Image */}
       <div className="fsr-flex-1 fsr-w-full fsr-order-2 lg:fsr-order-1">
         <div
-          className={`${
+          className={`
+          fsr-transition fsr-duration-300 lg:-fsr-mb-96 fsr-sticky fsr-top-64 group-last:fsr-mb-0 fsr-z-20 fsr-ml-6 lg:fsr-ml-0 fsr-mb-16
+          ${
             isIntersecting
               ? "fsr-opacity-100 fsr-scale-100"
               : "lg:fsr-opacity-0 lg:fsr-scale-50"
-          } fsr-bg-gray-50 fsr-transition fsr-duration-300 fsr-border fsr-border-gray-200 fsr-p-8 fsr-rounded-md fsr-flex fsr-justify-center fsr-items-start lg:-fsr-mb-96 fsr-sticky fsr-top-64 group-last:fsr-mb-0 fsr-z-20 fsr-ml-6 lg:fsr-ml-0 fsr-mb-16`}
+          }  
+          ${
+            !feature.customPicture &&
+            "fsr-bg-gray-50 fsr-border fsr-border-gray-200 fsr-p-8 fsr-rounded-md fsr-flex fsr-justify-center fsr-items-start"
+          }
+          `}
         >
-          <img
-            className="fsr-w-48 fsr-object-contain lg:fsr-w-64"
-            src={feature.imageUrl}
-          />
+          {feature.customPicture ? (
+            feature.customPicture({ isIntersecting })
+          ) : (
+            <img
+              className="fsr-w-48 fsr-object-contain lg:fsr-w-64"
+              src={feature.imageUrl}
+            />
+          )}
         </div>
       </div>
       {/* Info */}
       <div className="fsr-flex-1 fsr-w-full fsr-self-stretch fsr-order-1 lg:fsr-order-2 fsr-text-left">
         <div className="fsr-h-full">
           <div className="fsr-flex-1 fsr-h-full fsr-ml-6 lg:fsr-pl-0">
-            {/* Title */}
-            <h4
-              className={`${
-                isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
-              } fsr-transition fsr-duration-300 fsr-text-2xl lg:fsr-text-3xl -fsr-mt-3`}
-              ref={feature.ref}
-              id={feature.id}
-            >
-              {feature.title}
-            </h4>
-            {/* Description */}
-            <p
-              className={`${
-                isIntersecting ? "fsr-text-gray-600" : "fsr-text-gray-300"
-              } fsr-transition fsr-duration-300 fsr-mt-4`}
-            >
-              {feature.description}
-            </p>
-            {/* Link */}
-            <button
-              className={`${
-                isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
-              } fsr-text-md fsr-font-medium fsr-mt-4 fsr-mb-8 lg:fsr-mb-32 lg:group-last:fsr-mb-0 fsr-transition fsr-duration-300`}
-            >
-              Learn more
-              <span className="fsr-ml-1">&gt;</span>
-            </button>
+            {feature.customDescription ? (
+              feature.customDescription({ isIntersecting })
+            ) : (
+              <>
+                {/* Title */}
+                <h4
+                  className={`${
+                    isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
+                  } fsr-transition fsr-duration-300 fsr-text-2xl lg:fsr-text-3xl -fsr-mt-3`}
+                  ref={feature.ref}
+                  id={feature.id}
+                >
+                  {feature.title}
+                </h4>
+                {/* Description */}
+                <p
+                  className={`${
+                    isIntersecting ? "fsr-text-gray-600" : "fsr-text-gray-300"
+                  } fsr-transition fsr-duration-300 fsr-mt-4`}
+                >
+                  {feature.description}
+                </p>
+                {/* Link */}
+                <button
+                  className={`${
+                    isIntersecting ? "fsr-text-blue-600" : "fsr-text-gray-300"
+                  } fsr-text-md fsr-font-medium fsr-mt-4 fsr-mb-8 lg:fsr-mb-32 lg:group-last:fsr-mb-0 fsr-transition fsr-duration-300`}
+                >
+                  Learn more
+                  <span className="fsr-ml-1">&gt;</span>
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

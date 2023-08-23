@@ -28,6 +28,7 @@ export const FeatureScroller: React.FC<Props> = ({
     ...feature,
     ref: useRef<HTMLDivElement>(null),
   }));
+  // TODO: Consider adding a script to check if scrolled to the bottom to show all features
 
   const handleFeatureScrolling = () => {
     const bulletFaceElementTop =
@@ -50,7 +51,7 @@ export const FeatureScroller: React.FC<Props> = ({
   useEffect(() => {
     window.addEventListener("scroll", handleFeatureScrolling);
     setIntersectingEntries({ [featureList[0].id]: true });
-import React from "react";
+
     return () => {
       window.removeEventListener("scroll", handleFeatureScrolling);
     };
