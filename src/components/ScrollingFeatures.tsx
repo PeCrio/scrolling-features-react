@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FeatureItem, AdFeature } from "./FeatureItem";
+import { v4 as uuidv4 } from "uuid";
 
+// TODO: Add prop for line and ball color
 type Props = {
   features?: AdFeature[];
 };
 
-const defaultBasicDemoFeaturesExample = [
+const defaultBasicDemoFeaturesExample: Props["features"] = [
   {
-    id: "feature1",
     title: "Example Title",
     description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
           vitae asperiores non deserunt possimus impedit aliquam quae ullam
@@ -24,28 +25,36 @@ export const ScrollingFeatures: React.FC<Props> = ({
     Record<string, boolean>
   >({});
   const trackingBallRef = useRef<HTMLDivElement>(null);
-  const featureList = features.map((feature) => ({
-    ...feature,
-    ref: useRef<HTMLDivElement>(null),
-  }));
+
+  const featureList = useMemo(
+    () =>
+      features?.map((feature) => ({
+        ...feature,
+        id: uuidv4(),
+      })),
+    [features]
+  );
+
   // TODO: Consider adding a script to check if scrolled to the bottom to show all features
 
   const handleFeatureScrolling = () => {
-    const bulletFaceElementTop =
+    const trackingBallElementTop =
       trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
 
-    document.querySelectorAll("#feature-item").forEach((featureElement) => {
-      const featureElementTop = featureElement.getBoundingClientRect().top;
-      const featureId = featureElement.getAttribute(
-        "data-feature-id"
-      ) as string;
+    document
+      .querySelectorAll("#sfr-feature-list-item")
+      .forEach((featureElement) => {
+        const featureElementTop = featureElement.getBoundingClientRect().top;
+        const featureId = featureElement.getAttribute(
+          "data-feature-id"
+        ) as string;
 
-      if (bulletFaceElementTop >= featureElementTop) {
-        setIntersectingEntries({
-          [featureId]: true,
-        });
-      }
-    });
+        if (trackingBallElementTop >= featureElementTop) {
+          setIntersectingEntries({
+            [featureId]: true,
+          });
+        }
+      });
   };
 
   useEffect(() => {

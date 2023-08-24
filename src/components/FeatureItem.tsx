@@ -1,10 +1,6 @@
 import React from "react";
 
-type BaseAdFeature = {
-  id: string;
-};
-
-type BasicAdFeature = BaseAdFeature & {
+type BasicAdFeature = {
   scrollingItem?: never;
   fixedItem?: never;
   title: string;
@@ -16,7 +12,7 @@ type CustomAdFeatureOptions = {
   isIntersecting: boolean;
 };
 
-type CustomAdFeature = BaseAdFeature & {
+type CustomAdFeature = {
   scrollingItem: (options: CustomAdFeatureOptions) => JSX.Element;
   fixedItem: (options: CustomAdFeatureOptions) => JSX.Element;
   title?: never;
@@ -25,10 +21,13 @@ type CustomAdFeature = BaseAdFeature & {
 };
 
 export type AdFeature = BasicAdFeature | CustomAdFeature;
+export type FeatureListItem = AdFeature & {
+  id: string;
+};
 
 type Props = {
   intersectingEntries?: Record<string, boolean>;
-  feature: AdFeature & { ref: React.RefObject<HTMLDivElement> };
+  feature: FeatureListItem;
 };
 export const FeatureItem: React.FC<Props> = ({
   intersectingEntries,
@@ -38,10 +37,9 @@ export const FeatureItem: React.FC<Props> = ({
 
   return (
     <div
-      id="feature-item"
+      id="sfr-feature-list-item"
       className="sfr-flex lg:sfr-gap-32 lg:sfr-flex-row sfr-flex-col sfr-group last:lg:sfr-h-auto sfr-relative sfr-isolate"
       data-feature-id={feature.id}
-      ref={feature.ref}
     >
       {/* Mobile Line follower */}
       <div
@@ -99,7 +97,6 @@ export const FeatureItem: React.FC<Props> = ({
                   className={`${
                     isIntersecting ? "sfr-text-blue-600" : "sfr-text-gray-300"
                   } sfr-transition sfr-duration-300 sfr-text-2xl lg:sfr-text-3xl -sfr-mt-3`}
-                  ref={feature.ref}
                   id={feature.id}
                 >
                   {feature.title}

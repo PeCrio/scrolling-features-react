@@ -20,11 +20,11 @@ function App() {
       </h1>
       <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
+          key="test"
           features={[
             {
-              id: "6",
               scrollingItem: () => (
-                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded sfr-mb-32 ">
+                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
                   <h3 className="sfr-text-2xl sfr-font-semibold">
                     Custom description
                   </h3>
@@ -54,9 +54,8 @@ function App() {
               ),
             },
             {
-              id: "7",
               scrollingItem: () => (
-                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded sfr-mb-32 ">
+                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
                   <h3 className="sfr-text-2xl sfr-font-semibold">
                     Custom description
                   </h3>
@@ -73,7 +72,7 @@ function App() {
               ),
               fixedItem: ({ isIntersecting }) => (
                 <div
-                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 `}
+                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 last:sfr-mb-0`}
                 >
                   <img
                     src="https://placehold.co/600x400"
@@ -93,23 +92,49 @@ function App() {
       </h1>
       <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
+          key="test3"
           features={[
             {
-              id: "1",
               description:
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
               imageUrl: "https://placehold.co/600x400",
               title: "This is a test",
             },
             {
-              id: "2",
               description:
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
               imageUrl: "https://placehold.co/600x400",
               title: "This is a test",
             },
             {
-              id: "3",
+              description:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
+              imageUrl: "https://placehold.co/600x400",
+              title: "This is a test",
+            },
+          ]}
+        />
+      </div>
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
+        Another Basic example
+      </h1>
+      <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
+        <ScrollingFeatures
+          key="test2"
+          features={[
+            {
+              description:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
+              imageUrl: "https://placehold.co/600x400",
+              title: "This is a test",
+            },
+            {
+              description:
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
+              imageUrl: "https://placehold.co/600x400",
+              title: "This is a test",
+            },
+            {
               description:
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
               imageUrl: "https://placehold.co/600x400",
