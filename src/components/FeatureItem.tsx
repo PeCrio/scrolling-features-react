@@ -5,8 +5,8 @@ type BaseAdFeature = {
 };
 
 type BasicAdFeature = BaseAdFeature & {
-  customPicture?: never;
-  customDescription?: never;
+  scrollingItem?: never;
+  fixedItem?: never;
   title: string;
   description: string;
   imageUrl: string;
@@ -17,8 +17,8 @@ type CustomAdFeatureOptions = {
 };
 
 type CustomAdFeature = BaseAdFeature & {
-  customPicture: (options: CustomAdFeatureOptions) => JSX.Element;
-  customDescription: (options: CustomAdFeatureOptions) => JSX.Element;
+  scrollingItem: (options: CustomAdFeatureOptions) => JSX.Element;
+  fixedItem: (options: CustomAdFeatureOptions) => JSX.Element;
   title?: never;
   description?: never;
   imageUrl?: never;
@@ -60,7 +60,7 @@ export const FeatureItem: React.FC<Props> = ({
         } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-z-10 -sfr-translate-x-2 sfr-absolute sfr-left-0 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white`}
       ></div>
 
-      {/* Image */}
+      {/* Scrolling Item */}
       <div className="sfr-flex-1 sfr-w-full sfr-order-2 lg:sfr-order-1">
         <div
           className={`
@@ -71,13 +71,13 @@ export const FeatureItem: React.FC<Props> = ({
               : "lg:sfr-opacity-0 lg:sfr-scale-50"
           }  
           ${
-            !feature.customPicture &&
+            !feature.scrollingItem &&
             "sfr-bg-gray-50 sfr-border sfr-border-gray-200 sfr-p-8 sfr-rounded-md sfr-flex sfr-justify-center sfr-items-start"
           }
           `}
         >
-          {feature.customPicture ? (
-            feature.customPicture({ isIntersecting })
+          {feature.scrollingItem ? (
+            feature.scrollingItem({ isIntersecting })
           ) : (
             <img
               className="sfr-w-48 sfr-object-contain lg:sfr-w-64"
@@ -86,12 +86,12 @@ export const FeatureItem: React.FC<Props> = ({
           )}
         </div>
       </div>
-      {/* Info */}
+      {/* Fixed Item */}
       <div className="sfr-flex-1 sfr-w-full sfr-self-stretch sfr-order-1 lg:sfr-order-2 sfr-text-left">
         <div className="sfr-h-full">
           <div className="sfr-flex-1 sfr-h-full sfr-ml-6 lg:sfr-pl-0">
-            {feature.customDescription ? (
-              feature.customDescription({ isIntersecting })
+            {feature.fixedItem ? (
+              feature.fixedItem({ isIntersecting })
             ) : (
               <>
                 {/* Title */}

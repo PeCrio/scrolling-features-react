@@ -1,1 +1,1 @@
-export { FeatureScroller } from "./src/components/FeatureScroller";
+export { ScrollingFeatures } from "./src/components/ScrollingFeatures";

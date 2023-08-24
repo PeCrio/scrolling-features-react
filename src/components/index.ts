@@ -1,1 +1,1 @@
-export { FeatureScroller } from "./FeatureScroller";
+export { ScrollingFeatures } from "./ScrollingFeatures";
