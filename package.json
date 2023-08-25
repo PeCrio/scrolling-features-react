@@ -6,7 +6,7 @@
     "email": "theossaiprecious@gmail.com",
     "url": "https://ossaiprecious.com"
   },
-  "version": "0.0.4",
+  "version": "0.0.1",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",

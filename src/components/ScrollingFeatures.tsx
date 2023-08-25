@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { FeatureItem, AdFeature } from "./FeatureItem";
+import "../index.css";
 
 // TODO: Add prop for line and ball color
 type Props = {
@@ -80,7 +81,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
 
   return (
     <div style={{ contain: "paint" }}>
-      <div className="sfr-relative sfr-isolate sfr-z-0 -sfr-mt-48">
+      <div className="sfr-relative sfr-isolate sfr-z-0 -sfr-mt-48 sfr-mb-6">
         {/* Line divider */}
         <div
           id="line-divider"
