@@ -5,6 +5,8 @@ import "../index.css";
 // TODO: Add prop for line and ball color
 type Props = {
   features?: AdFeature[];
+  trackingBall?: JSX.Element;
+  trackingLine?: string; // @description Color
 };
 
 const defaultBasicDemoFeaturesExample: Props["features"] = [
@@ -20,6 +22,8 @@ const defaultBasicDemoFeaturesExample: Props["features"] = [
 
 export const ScrollingFeatures: React.FC<Props> = ({
   features = defaultBasicDemoFeaturesExample,
+  trackingBall: customTrackingBall,
+  trackingLine = "pink",
 }) => {
   const [intersectingEntries, setIntersectingEntries] = useState<
     Record<string, boolean>
@@ -84,24 +88,34 @@ export const ScrollingFeatures: React.FC<Props> = ({
       <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48 lg:sfr-mb-6">
         {/* Line divider */}
         <div
-          id="line-divider"
           className="sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-h-full -sfr-z-10 sfr-absolute sfr-from-gray-200 sfr-left-0 lg:sfr-left-[50%] sfr-bg-repeat-y"
           style={{
             backgroundImage:
               "linear-gradient(180deg, transparent, transparent 50%, var(--tw-gradient-from) 50%, var(--tw-gradient-from) 100%)",
-            backgroundSize: "2px 10px",
+            backgroundSize: "2px 20px",
           }}
         ></div>
         {/* Beginning tracking line mask */}
         <div className="sfr-bg-gradient-to-b sfr-from-white sfr-via-white sfr-to-transparent sfr-via-[85%] sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]"></div>
-        {/* Tracking line */}
-        <div className="sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-h-64 -sfr-z-10 sfr-sticky sfr-top-0 sfr-bg-blue-600 sfr-left-4 lg:sfr-left-[50%] sfr-hidden lg:sfr-block"></div>
+        {/* Desktop tracking line */}
+        <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible sfr-justify-center -sfr-z-10">
+          <div
+            className="sfr-w-[2px] sfr-h-64"
+            style={{ backgroundColor: trackingLine }}
+          ></div>
+        </div>
         {/* Tracking ball */}
         <div
           ref={trackingBallRef}
-          className="sfr-transition sfr-duration-300 sfr-w-7 sfr-h-7 sfr-z-20 sfr-translate-x-[-0.875rem] sfr-sticky sfr-top-[37%] lg:sfr-top-64 sfr-left-4 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring sfr-bg-blue-500 lg:sfr-block sfr-invisible lg:sfr-visible"
+          className="sfr-z-20 sfr-sticky sfr-top-[37%] lg:sfr-top-64 lg:sfr-flex sfr-invisible lg:sfr-visible sfr-justify-center"
         >
-          <div id="ball"></div>
+          {customTrackingBall ? (
+            customTrackingBall
+          ) : (
+            <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring">
+              <div id="ball"></div>
+            </div>
+          )}
         </div>
         {/* Feature listing */}
         <div className="-sfr-mt-4">

@@ -5,10 +5,10 @@ function App() {
   return (
     <div className="App">
       <div className="sfr-py-64 sfr-bg-gradient-to-r sfr-from-purple-600 sfr-to-blue-400">
-        <h1 className="sfr-text-5xl sfr-text-center sfr-font-bold ">
+        <h1 className="sfr-text-5xl sfr-text-center sfr-font-bold sfr-text-white">
           Scrolling features react
         </h1>
-        <div className="sfr-flex sfr-space-x-8 sfr-justify-center sfr-mt-8">
+        <div className="sfr-flex sfr-space-x-8 sfr-justify-center sfr-mt-8 sfr-text-white">
           <button>Github</button>
           <button>NPM</button>
           <button>Documentation</button>
@@ -21,6 +21,7 @@ function App() {
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test"
+          trackingLine="blue"
           features={[
             {
               scrollingItem: () => (
@@ -113,6 +114,12 @@ function App() {
               title: "This is a test",
             },
           ]}
+          trackingBall={
+            <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring">
+              <div className="sfr-bg-blue-500 sfr-w-full sfr-h-full sfr-rounded-full"></div>
+            </div>
+          }
+          trackingLine="blue"
         />
       </div>
       <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">

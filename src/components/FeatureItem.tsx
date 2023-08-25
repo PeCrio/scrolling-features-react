@@ -41,7 +41,7 @@ export const FeatureItem: React.FC<Props> = ({
       className="sfr-flex lg:sfr-gap-32 lg:sfr-flex-row sfr-flex-col sfr-group last:lg:sfr-h-auto sfr-relative sfr-isolate"
       data-feature-id={feature.id}
     >
-      {/* Mobile Line follower */}
+      {/* Mobile tracking line */}
       <div
         className={`${
           isIntersecting ? "sfr-h-full" : "sfr-h-0"
@@ -53,7 +53,7 @@ export const FeatureItem: React.FC<Props> = ({
       <div
         className={`${
           isIntersecting
-            ? " sfr-ring-blue-500 sfr-ring  sfr-bg-blue-500"
+            ? " sfr-ring-blue-500 sfr-ring sfr-bg-blue-500"
             : " sfr-bg-gray-300"
         } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-z-10 -sfr-translate-x-2 sfr-absolute sfr-left-0 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white`}
       ></div>

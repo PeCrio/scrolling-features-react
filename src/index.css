@@ -3,9 +3,7 @@
 @tailwind utilities;
 
 #ball {
-  width: 100%;
-  height: 100%;
-  border-radius: 150px;
+  @apply sfr-w-6 sfr-h-6 sfr-rounded-full;
   background-color: blue;
   background-image: radial-gradient(
       circle 25px at 0 0,
