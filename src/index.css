@@ -21,3 +21,8 @@
   background-repeat: no-repeat, no-repeat;
   position: relative;
 }
+@screen lg {
+  #package-mask {
+    contain: paint;
+  }
+}

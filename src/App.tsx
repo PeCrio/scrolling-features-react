@@ -72,7 +72,7 @@ function App() {
               ),
               fixedItem: ({ isIntersecting }) => (
                 <div
-                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 last:sfr-mb-0`}
+                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-16 lg:sfr-mb-28 lg:last:sfr-mb-0`}
                 >
                   <img
                     src="https://placehold.co/600x400"

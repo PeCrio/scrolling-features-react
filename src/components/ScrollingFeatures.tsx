@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { FeatureItem, AdFeature } from "./FeatureItem";
+import React, { useEffect, useRef, useState } from "react";
+import { FeatureItem, AdFeature, FeatureListItem } from "./FeatureItem";
 import "../index.css";
 
 // TODO: Add prop for line and ball color
@@ -24,6 +24,8 @@ export const ScrollingFeatures: React.FC<Props> = ({
   const [intersectingEntries, setIntersectingEntries] = useState<
     Record<string, boolean>
   >({});
+
+  const [featureList, setFeatureList] = useState<FeatureListItem[]>([]);
   const trackingBallRef = useRef<HTMLDivElement>(null);
 
   function generateId() {
@@ -39,40 +41,38 @@ export const ScrollingFeatures: React.FC<Props> = ({
     return result;
   }
 
-  const featureList = useMemo(
-    () =>
-      features?.map((feature) => ({
-        ...feature,
-        id: generateId(),
-      })),
-    [features]
-  );
-
   // TODO: Consider adding a script to check if scrolled to the bottom to show all features
 
-  const handleFeatureScrolling = () => {
-    const trackingBallElementTop =
-      trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
-
-    document
-      .querySelectorAll("#sfr-feature-list-item")
-      .forEach((featureElement) => {
-        const featureElementTop = featureElement.getBoundingClientRect().top;
-        const featureId = featureElement.getAttribute(
-          "data-feature-id"
-        ) as string;
-
-        if (trackingBallElementTop >= featureElementTop) {
-          setIntersectingEntries({
-            [featureId]: true,
-          });
-        }
-      });
-  };
-
   useEffect(() => {
-    window.addEventListener("scroll", handleFeatureScrolling);
-    setIntersectingEntries({ [featureList[0].id]: true });
+    const handleFeatureScrolling = () => {
+      const trackingBallElementTop =
+        trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
+
+      document
+        .querySelectorAll("#sfr-feature-list-item")
+        .forEach((featureElement) => {
+          const featureElementTop = featureElement.getBoundingClientRect().top;
+          const featureId = featureElement.getAttribute(
+            "data-feature-id"
+          ) as string;
+
+          if (trackingBallElementTop >= featureElementTop) {
+            setIntersectingEntries({
+              [featureId]: true,
+            });
+          }
+        });
+    };
+
+    window && window.addEventListener("scroll", handleFeatureScrolling);
+
+    const newFeatureList = features?.map((feature) => ({
+      ...feature,
+      id: generateId(),
+    }));
+
+    setFeatureList(newFeatureList);
+    setIntersectingEntries({ [newFeatureList[0].id]: true });
 
     return () => {
       window.removeEventListener("scroll", handleFeatureScrolling);
@@ -80,8 +80,8 @@ export const ScrollingFeatures: React.FC<Props> = ({
   }, []);
 
   return (
-    <div style={{ contain: "paint" }}>
-      <div className="sfr-relative sfr-isolate sfr-z-0 -sfr-mt-48 sfr-mb-6">
+    <div id="package-mask">
+      <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48 lg:sfr-mb-6">
         {/* Line divider */}
         <div
           id="line-divider"
