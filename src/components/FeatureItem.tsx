@@ -47,7 +47,7 @@ export const FeatureItem: React.FC<Props> = ({
           isIntersecting ? "sfr-h-full" : "sfr-h-0"
         } sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-z-10 sfr-absolute sfr-top-0 sfr-bg-blue-600 sfr-left-0 sfr-block lg:sfr-hidden sfr-transition sfr-origin-top sfr-transform sfr-duration-700`}
       ></div>
-      {/* Bullet background */}
+      {/* Bullet background mask */}
       <div className="sfr-w-4 sfr-h-7 sfr-z-10 sfr-bg-white sfr-scale-y-150 sfr-absolute sfr-left-0 lg:sfr-left-[50%] -sfr-translate-x-2 sfr-translate-y-[-0.4375rem]"></div>
       {/* Bullet point */}
       <div

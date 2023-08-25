@@ -15,10 +15,10 @@ function App() {
         </div>
       </div>
       <br />
-      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">
         Custom example
       </h1>
-      <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
+      <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test"
           features={[
@@ -26,7 +26,7 @@ function App() {
               scrollingItem: () => (
                 <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
                   <h3 className="sfr-text-2xl sfr-font-semibold">
-                    Custom description
+                    First custom description
                   </h3>
                   <p className="sfr-text-md sfr-text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -57,7 +57,7 @@ function App() {
               scrollingItem: () => (
                 <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
                   <h3 className="sfr-text-2xl sfr-font-semibold">
-                    Custom description
+                    Second custom description
                   </h3>
                   <p className="sfr-text-md sfr-text-gray-500">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -90,7 +90,7 @@ function App() {
       <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
         Basic example
       </h1>
-      <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
+      <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test3"
           features={[
@@ -103,22 +103,22 @@ function App() {
             {
               description:
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
+              imageUrl: "https://placehold.co/800x500",
               title: "This is a test",
             },
             {
               description:
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
+              imageUrl: "https://placehold.co/600x600",
               title: "This is a test",
             },
           ]}
         />
       </div>
-      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">
         Another Basic example
       </h1>
-      <div className="sfr-mt-52 sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
+      <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test2"
           features={[
