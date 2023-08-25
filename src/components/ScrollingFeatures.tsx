@@ -1,12 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { FeatureItem, AdFeature, FeatureListItem } from "./FeatureItem";
 import "../index.css";
 
 // TODO: Add prop for line and ball color
 type Props = {
   features?: AdFeature[];
-  trackingBall?: JSX.Element;
-  trackingLine?: string; // @description Color
+  trackingBall?: ReactNode;
+  trackingLineColor?: string;
+  lineTrail?: ReactNode;
 };
 
 const defaultBasicDemoFeaturesExample: Props["features"] = [
@@ -23,7 +24,8 @@ const defaultBasicDemoFeaturesExample: Props["features"] = [
 export const ScrollingFeatures: React.FC<Props> = ({
   features = defaultBasicDemoFeaturesExample,
   trackingBall: customTrackingBall,
-  trackingLine = "pink",
+  trackingLineColor = "pink",
+  lineTrail: customLineTrail,
 }) => {
   const [intersectingEntries, setIntersectingEntries] = useState<
     Record<string, boolean>
@@ -86,22 +88,28 @@ export const ScrollingFeatures: React.FC<Props> = ({
   return (
     <div id="package-mask">
       <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48 lg:sfr-mb-6">
-        {/* Line divider */}
-        <div
-          className="sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-h-full -sfr-z-10 sfr-absolute sfr-from-gray-200 sfr-left-0 lg:sfr-left-[50%] sfr-bg-repeat-y"
-          style={{
-            backgroundImage:
-              "linear-gradient(180deg, transparent, transparent 50%, var(--tw-gradient-from) 50%, var(--tw-gradient-from) 100%)",
-            backgroundSize: "2px 20px",
-          }}
-        ></div>
+        {/* Line trail */}
+        <div className="sfr-flex lg:sfr-justify-center -sfr-z-10 sfr-w-full sfr-h-full sfr-absolute sft-top-0 ">
+          {customLineTrail ? (
+            customLineTrail
+          ) : (
+            <div
+              className="sfr-w-[2px] -sfr-translate-x-[50%] lg:sfr-translate-x-0 sfr-h-full sfr-from-gray-300 sfr-bg-repeat-y"
+              style={{
+                backgroundImage:
+                  "linear-gradient(180deg, transparent, transparent 50%, var(--tw-gradient-from) 50%, var(--tw-gradient-from) 100%)",
+                backgroundSize: "2px 10px",
+              }}
+            ></div>
+          )}
+        </div>
         {/* Beginning tracking line mask */}
-        <div className="sfr-bg-gradient-to-b sfr-from-white sfr-via-white sfr-to-transparent sfr-via-[85%] sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]"></div>
+        <div className="sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-from-white sfr-via-white sfr-to-transparent sfr-via-[85%] sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]"></div>
         {/* Desktop tracking line */}
-        <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible sfr-justify-center -sfr-z-10">
+        <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10">
           <div
             className="sfr-w-[2px] sfr-h-64"
-            style={{ backgroundColor: trackingLine }}
+            style={{ backgroundColor: trackingLineColor }}
           ></div>
         </div>
         {/* Tracking ball */}

@@ -1,20 +1,22 @@
-import React from "react";
+import React, { ReactNode } from "react";
 
 type BasicAdFeature = {
   scrollingItem?: never;
   fixedItem?: never;
+  indicator?: never;
   title: string;
   description: string;
   imageUrl: string;
 };
 
-type CustomAdFeatureOptions = {
+export type CustomAdFeatureOptions = {
   isIntersecting: boolean;
 };
 
 type CustomAdFeature = {
-  scrollingItem: (options: CustomAdFeatureOptions) => JSX.Element;
-  fixedItem: (options: CustomAdFeatureOptions) => JSX.Element;
+  scrollingItem: (options: CustomAdFeatureOptions) => ReactNode;
+  fixedItem: (options: CustomAdFeatureOptions) => ReactNode;
+  indicator?: (options: CustomAdFeatureOptions) => ReactNode;
   title?: never;
   description?: never;
   imageUrl?: never;
@@ -47,17 +49,27 @@ export const FeatureItem: React.FC<Props> = ({
           isIntersecting ? "sfr-h-full" : "sfr-h-0"
         } sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-z-10 sfr-absolute sfr-top-0 sfr-bg-blue-600 sfr-left-0 sfr-block lg:sfr-hidden sfr-transition sfr-origin-top sfr-transform sfr-duration-700`}
       ></div>
-      {/* Bullet background mask */}
-      <div className="sfr-w-4 sfr-h-7 sfr-z-10 sfr-bg-white sfr-scale-y-150 sfr-absolute sfr-left-0 lg:sfr-left-[50%] -sfr-translate-x-2 sfr-translate-y-[-0.4375rem]"></div>
-      {/* Bullet point */}
-      <div
-        className={`${
-          isIntersecting
-            ? " sfr-ring-blue-500 sfr-ring sfr-bg-blue-500"
-            : " sfr-bg-gray-300"
-        } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-z-10 -sfr-translate-x-2 sfr-absolute sfr-left-0 lg:sfr-left-[50%] sfr-rounded-full sfr-border-2 sfr-border-white`}
-      ></div>
-
+      {/* Feature indicator */}
+      <div className="sfr-absolute sfr-z-10 sfr-w-full">
+        <div className="sfr-relative sfr-flex sfr-justify-start lg:sfr-justify-center">
+          {feature.indicator ? (
+            feature.indicator({ isIntersecting })
+          ) : (
+            <>
+              {/* Feature indicator background mask */}
+              <div className="sfr-absolute sfr-w-4 sfr-h-12 -sfr-z-10 sfr-bg-white sfr-self-center lg:sfr-translate-x-0 -sfr-translate-x-[50%]"></div>
+              {/* Feature indicator item */}
+              <div
+                className={`${
+                  isIntersecting
+                    ? " sfr-ring-blue-500 sfr-ring sfr-bg-blue-500"
+                    : " sfr-bg-gray-300"
+                } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-rounded-full sfr-border-2 sfr-border-white lg:sfr-translate-x-0 -sfr-translate-x-[50%]`}
+              ></div>
+            </>
+          )}
+        </div>
+      </div>
       {/* Scrolling Item */}
       <div className="sfr-flex-1 sfr-w-full sfr-order-2 lg:sfr-order-1">
         <div

@@ -1,5 +1,33 @@
 import React from "react";
 import { ScrollingFeatures } from "./components/ScrollingFeatures";
+import { CustomAdFeatureOptions } from "./components/FeatureItem";
+
+const CustomImageComponent: React.FC<CustomAdFeatureOptions> = (options) => (
+  <div className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 `}>
+    <img
+      src="https://placehold.co/600x400"
+      alt="test"
+      className={`sfr-h-80 ${
+        options.isIntersecting && "sfr-shadow-lg sfr-shadow-blue-500"
+      }`}
+    />
+  </div>
+);
+
+const CustomTextComponent: React.FC = () => (
+  <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
+    <h3 className="sfr-text-2xl sfr-font-semibold">First custom description</h3>
+    <p className="sfr-text-md sfr-text-gray-500">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, commodi
+      velit reprehenderit ea eveniet voluptatibus repellat ipsum possimus
+      incidunt ratione natus sed sint labore quasi nihil perspiciatis placeat
+      dignissimos fugit.
+    </p>
+    <button className="sfr-mt-4 sfr-px-2 sfr-py-1 sfr-rounded sfr-bg-blue-700 sfr-text-white ">
+      Custom button
+    </button>
+  </div>
+);
 
 function App() {
   return (
@@ -21,68 +49,18 @@ function App() {
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test"
-          trackingLine="blue"
+          trackingLineColor="blue"
           features={[
             {
-              scrollingItem: () => (
-                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
-                  <h3 className="sfr-text-2xl sfr-font-semibold">
-                    First custom description
-                  </h3>
-                  <p className="sfr-text-md sfr-text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque, commodi velit reprehenderit ea eveniet voluptatibus
-                    repellat ipsum possimus incidunt ratione natus sed sint
-                    labore quasi nihil perspiciatis placeat dignissimos fugit.
-                  </p>
-                  <button className="sfr-mt-4 sfr-px-2 sfr-py-1 sfr-rounded sfr-bg-blue-700 sfr-text-white ">
-                    Custom button
-                  </button>
-                </div>
-              ),
+              scrollingItem: () => <CustomTextComponent />,
               fixedItem: ({ isIntersecting }) => (
-                <div
-                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 `}
-                >
-                  <img
-                    src="https://placehold.co/600x400"
-                    alt="test"
-                    className={`sfr-h-80 ${
-                      isIntersecting && "sfr-shadow-lg sfr-shadow-blue-500"
-                    }`}
-                  />
-                </div>
+                <CustomImageComponent isIntersecting={isIntersecting} />
               ),
             },
             {
-              scrollingItem: () => (
-                <div className="sfr-bg-blue-50 sfr-p-4 sfr-rounded">
-                  <h3 className="sfr-text-2xl sfr-font-semibold">
-                    Second custom description
-                  </h3>
-                  <p className="sfr-text-md sfr-text-gray-500">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Itaque, commodi velit reprehenderit ea eveniet voluptatibus
-                    repellat ipsum possimus incidunt ratione natus sed sint
-                    labore quasi nihil perspiciatis placeat dignissimos fugit.
-                  </p>
-                  <button className="sfr-mt-4 sfr-px-2 sfr-py-1 sfr-rounded sfr-bg-blue-700 sfr-text-white ">
-                    Custom button
-                  </button>
-                </div>
-              ),
+              scrollingItem: () => <CustomTextComponent />,
               fixedItem: ({ isIntersecting }) => (
-                <div
-                  className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-16 lg:sfr-mb-28 lg:last:sfr-mb-0`}
-                >
-                  <img
-                    src="https://placehold.co/600x400"
-                    alt="test"
-                    className={`sfr-h-80 ${
-                      isIntersecting && "sfr-shadow-lg sfr-shadow-blue-500"
-                    }`}
-                  />
-                </div>
+                <CustomImageComponent isIntersecting={isIntersecting} />
               ),
             },
           ]}
@@ -119,7 +97,7 @@ function App() {
               <div className="sfr-bg-blue-500 sfr-w-full sfr-h-full sfr-rounded-full"></div>
             </div>
           }
-          trackingLine="blue"
+          trackingLineColor="blue"
         />
       </div>
       <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">
