@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollingFeatures } from "./components/ScrollingFeatures";
-import { CustomAdFeatureOptions } from "./components/FeatureItem";
+import { AdFeatureOptions } from "./components/FeatureItem";
 
-const CustomImageComponent: React.FC<CustomAdFeatureOptions> = (options) => (
+const CustomImageComponent: React.FC<AdFeatureOptions> = (options) => (
   <div className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 `}>
     <img
       src="https://placehold.co/600x400"
@@ -29,6 +29,46 @@ const CustomTextComponent: React.FC = () => (
   </div>
 );
 
+const SimpleExampleTextComponent: React.FC<
+  AdFeatureOptions & { title: string; description: string }
+> = ({ isIntersecting, title, description }) => (
+  <>
+    {/* Title */}
+    <h4
+      className={`${
+        isIntersecting ? "sfr-text-blue-600" : "sfr-text-gray-300"
+      } sfr-transition sfr-duration-300 sfr-text-2xl lg:sfr-text-3xl -sfr-mt-3`}
+    >
+      {title}
+    </h4>
+    {/* Description */}
+    <p
+      className={`${
+        isIntersecting ? "sfr-text-gray-600" : "sfr-text-gray-300"
+      } sfr-transition sfr-duration-300 sfr-mt-4`}
+    >
+      {description}
+    </p>
+    {/* Link */}
+    <button
+      className={`${
+        isIntersecting ? "sfr-text-blue-600" : "sfr-text-gray-300"
+      } sfr-text-md sfr-font-medium sfr-mt-4 sfr-mb-8 lg:sfr-mb-32 lg:group-last:sfr-mb-0 sfr-transition sfr-duration-300`}
+    >
+      Learn more
+      <span className="sfr-ml-1">&gt;</span>
+    </button>
+  </>
+);
+
+const SimpleExampleImageComponent: React.FC<
+  AdFeatureOptions & { imageUrl: string }
+> = ({ imageUrl }) => (
+  <div className="sfr-bg-gray-50 sfr-border sfr-border-gray-200 sfr-p-8 sfr-rounded-md sfr-flex sfr-justify-center sfr-items-start">
+    <img className="sfr-w-48 sfr-object-contain lg:sfr-w-64" src={imageUrl} />
+  </div>
+);
+
 function App() {
   return (
     <div className="App">
@@ -43,30 +83,49 @@ function App() {
         </div>
       </div>
       <br />
-      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-mb-14 sfr-font-bold sfr-text-center">
         Custom example
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
           key="test"
-          trackingLineColor="blue"
+          trackingBall={
+            <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-red-500 sfr-ring">
+              <div className="sfr-bg-red-500 sfr-w-full sfr-h-full sfr-rounded-full"></div>
+            </div>
+          }
+          trackingLineColor="red"
           features={[
             {
               scrollingItem: () => <CustomTextComponent />,
               fixedItem: ({ isIntersecting }) => (
                 <CustomImageComponent isIntersecting={isIntersecting} />
               ),
+              indicator: ({ isIntersecting }) => (
+                <div
+                  className={`${
+                    isIntersecting ? "sfr-bg-red-500" : "sfr-bg-gray-300"
+                  } sfr-w-6 sfr-h-6 sfr-border-8 sfr-rounded-full sfr-border-white`}
+                ></div>
+              ),
             },
             {
               scrollingItem: () => <CustomTextComponent />,
               fixedItem: ({ isIntersecting }) => (
                 <CustomImageComponent isIntersecting={isIntersecting} />
               ),
+              indicator: ({ isIntersecting }) => (
+                <div
+                  className={`${
+                    isIntersecting ? "sfr-bg-red-500" : "sfr-bg-gray-300"
+                  } sfr-w-6 sfr-h-6 sfr-border-8 sfr-rounded-full sfr-border-white`}
+                ></div>
+              ),
             },
           ]}
         />
       </div>
-      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-mb-14 sfr-relative sfr-z-20 sfr-font-bold sfr-text-center">
         Basic example
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
@@ -74,22 +133,19 @@ function App() {
           key="test3"
           features={[
             {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
-              title: "This is a test",
-            },
-            {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/800x500",
-              title: "This is a test",
-            },
-            {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x600",
-              title: "This is a test",
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 1"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
             },
           ]}
           trackingBall={
@@ -100,7 +156,7 @@ function App() {
           trackingLineColor="blue"
         />
       </div>
-      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-font-bold sfr-text-center">
+      <h1 className="sfr-text-gray-600 sfr-text-5xl sfr-mt-32 sfr-mb-14 sfr-font-bold sfr-text-center">
         Another Basic example
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
@@ -108,22 +164,64 @@ function App() {
           key="test2"
           features={[
             {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
-              title: "This is a test",
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 2"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
             },
             {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
-              title: "This is a test",
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 3"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
             },
             {
-              description:
-                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?",
-              imageUrl: "https://placehold.co/600x400",
-              title: "This is a test",
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 4"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
+            },
+            {
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 5"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
             },
           ]}
         />

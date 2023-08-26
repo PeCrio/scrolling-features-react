@@ -10,21 +10,10 @@ type Props = {
   lineTrail?: ReactNode;
 };
 
-const defaultBasicDemoFeaturesExample: Props["features"] = [
-  {
-    title: "Example Title",
-    description: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-          vitae asperiores non deserunt possimus impedit aliquam quae ullam
-          ipsam, voluptate nam in itaque voluptatibus? Praesentium odit a
-          aliquam quod debitis`,
-    imageUrl: "https://placehold.co/600x400",
-  },
-];
-
 export const ScrollingFeatures: React.FC<Props> = ({
-  features = defaultBasicDemoFeaturesExample,
+  features = [],
   trackingBall: customTrackingBall,
-  trackingLineColor = "pink",
+  trackingLineColor = "blue",
   lineTrail: customLineTrail,
 }) => {
   const [intersectingEntries, setIntersectingEntries] = useState<
@@ -34,7 +23,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
   const [featureList, setFeatureList] = useState<FeatureListItem[]>([]);
   const trackingBallRef = useRef<HTMLDivElement>(null);
 
-  function generateId() {
+  const generateId = () => {
     let result = "";
     const characters =
       "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -45,49 +34,55 @@ export const ScrollingFeatures: React.FC<Props> = ({
       counter += 1;
     }
     return result;
-  }
+  };
 
   // TODO: Consider adding a script to check if scrolled to the bottom to show all features
 
+  const handleFeatureScrolling = () => {
+    const trackingBallElementTop =
+      trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
+
+    document
+      .querySelectorAll("#sfr-feature-list-item")
+      .forEach((featureElement) => {
+        const featureElementTop = featureElement.getBoundingClientRect().top;
+        const featureId = featureElement.getAttribute(
+          "data-feature-id"
+        ) as string;
+
+        if (trackingBallElementTop >= featureElementTop) {
+          setIntersectingEntries({
+            [featureId]: true,
+          });
+        }
+      });
+  };
+
   useEffect(() => {
-    const handleFeatureScrolling = () => {
-      const trackingBallElementTop =
-        trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
-
-      document
-        .querySelectorAll("#sfr-feature-list-item")
-        .forEach((featureElement) => {
-          const featureElementTop = featureElement.getBoundingClientRect().top;
-          const featureId = featureElement.getAttribute(
-            "data-feature-id"
-          ) as string;
-
-          if (trackingBallElementTop >= featureElementTop) {
-            setIntersectingEntries({
-              [featureId]: true,
-            });
-          }
-        });
-    };
-
     window && window.addEventListener("scroll", handleFeatureScrolling);
 
-    const newFeatureList = features?.map((feature) => ({
-      ...feature,
-      id: generateId(),
-    }));
+    if (features.length) {
+      const newFeatureList = features.map((feature) => ({
+        ...feature,
+        id: generateId(),
+      }));
 
-    setFeatureList(newFeatureList);
-    setIntersectingEntries({ [newFeatureList[0].id]: true });
+      setFeatureList(newFeatureList);
+      setIntersectingEntries({ [newFeatureList[0].id]: true });
+    }
 
     return () => {
       window.removeEventListener("scroll", handleFeatureScrolling);
     };
   }, []);
 
+  if (!features.length) {
+    return null;
+  }
+
   return (
     <div id="package-mask">
-      <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48 lg:sfr-mb-6">
+      <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48">
         {/* Line trail */}
         <div className="sfr-flex lg:sfr-justify-center -sfr-z-10 sfr-w-full sfr-h-full sfr-absolute sft-top-0 ">
           {customLineTrail ? (
@@ -133,6 +128,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
                 key={feature.id}
                 feature={feature}
                 intersectingEntries={intersectingEntries}
+                trackingLineColor={trackingLineColor}
               ></FeatureItem>
             ))}
         </div>
