@@ -74,7 +74,7 @@ Description: An array of objects that contain all features to be displayed in a 
 
 The below example uses tailwindcss classes to style it's custom component for the fixed and scrolling item.
 
-```
+```js
 
 const SimpleExampleTextComponent: React.FC<{
   title: string;
