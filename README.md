@@ -1,8 +1,23 @@
 # Scrolling Features React
 
-Easily bootstrap your landing page website or any web view that requires listing pictures with descriptive texts with a scrolling animation.
+Easily bootstrap your landing page website or any web view that requires showing infographic displays with descriptive texts and scrolling animations.
 
-<!-- Add a screenshot preview here -->
+![Preview](public/preview.gif)
+
+## Table of contents
+
+- [Scrolling Features React](#scrolling-features-react)
+  - [Table of contents](#table-of-contents)
+  - [Main features](#main-features)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [API](#api)
+    - [options/props](#optionsprops)
+    - [Prop definitions](#prop-definitions)
+    - [Type definitions](#type-definitions)
+  - [Example](#example)
+  - [Related packages](#related-packages)
+  - [Author](#author)
 
 ## Main features
 
@@ -13,14 +28,12 @@ Easily bootstrap your landing page website or any web view that requires listing
 - Customizable tracking line color
 - Customizable tracking ball
 
-## Install
+## Installation
 
 Install the NPM package using the below script
 
 ```bash
 npm install scrolling-features-react # using npm
-pnpm install scrolling-features-react # using pnpm
-yarn add scrolling-features-react # using yarn
 ```
 
 ## Usage
@@ -64,11 +77,11 @@ Description: An array of objects that contain all features to be displayed in a 
 
 ### Type definitions
 
-| Property             | Type     | Specific                                                                                            |
-| -------------------- | -------- | --------------------------------------------------------------------------------------------------- |
-| `AdFeature`          | Object   | `{scrollingItem: ElementWithOptions, fixedItem: ElementWithOptions, indicator: ElementWithOptions}` |
-| `ElementWithOptions` | Function | `(options: FeatureItemOptions) => ReactNode;`                                                       |
-| `FeatureItemOptions` | Object   | `{isIntersecting: boolean}`                                                                         |
+| Property             | Type     | Specific                                                                                                                |
+| -------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `AdFeature`          | Object   | `{scrollingItem: ElementWithOptions; fixedItem: ElementWithOptions; indicator?: ElementWithOptions `&#124;` undefined}` |
+| `ElementWithOptions` | Function | `(options: FeatureItemOptions) => ReactNode;`                                                                           |
+| `FeatureItemOptions` | Object   | `{isIntersecting: boolean}`                                                                                             |
 
 ## Example
 

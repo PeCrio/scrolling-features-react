@@ -76,13 +76,34 @@ function App() {
   return (
     <div className="App">
       <div className="sfr-py-64 sfr-bg-gradient-to-r sfr-from-purple-600 sfr-to-blue-400">
-        <h1 className="sfr-text-5xl sfr-text-center sfr-font-bold sfr-text-white">
+        <h1 className="sfr-text-5xl sfr-text-center sfr-font-bold sfr-text-white sfr-drop-shadow-md">
           Scrolling features react
         </h1>
         <div className="sfr-flex sfr-space-x-8 sfr-justify-center sfr-mt-8 sfr-text-white">
-          <button>Github</button>
-          <button>NPM</button>
-          <button>Documentation</button>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/PeCrio/scrolling-features-react"
+            className="sfr-drop-shadow-md hover:sfr-underline"
+          >
+            Github
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://npmjs.com/package/scrolling-features-react"
+            className="sfr-drop-shadow-md hover:sfr-underline"
+          >
+            NPM
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://github.com/PeCrio/scrolling-features-react/blob/main/README.md"
+            className="sfr-drop-shadow-md hover:sfr-underline"
+          >
+            Documentation
+          </a>
         </div>
       </div>
       <br />
