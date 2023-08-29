@@ -1,13 +1,15 @@
 import React, { ReactNode } from "react";
 
-export type AdFeatureOptions = {
+export type FeatureItemOptions = {
   isIntersecting: boolean;
 };
 
+type ElementWithOptions = (options: FeatureItemOptions) => ReactNode;
+
 export type AdFeature = {
-  scrollingItem: (options: AdFeatureOptions) => ReactNode;
-  fixedItem: (options: AdFeatureOptions) => ReactNode;
-  indicator?: (options: AdFeatureOptions) => ReactNode;
+  scrollingItem: ElementWithOptions;
+  fixedItem: ElementWithOptions;
+  indicator?: ElementWithOptions;
 };
 
 export type FeatureListItem = AdFeature & {

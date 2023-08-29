@@ -1,8 +1,8 @@
 import React from "react";
 import { ScrollingFeatures } from "./components/ScrollingFeatures";
-import { AdFeatureOptions } from "./components/FeatureItem";
+import { FeatureItemOptions } from "./components/FeatureItem";
 
-const CustomImageComponent: React.FC<AdFeatureOptions> = (options) => (
+const CustomImageComponent: React.FC<FeatureItemOptions> = (options) => (
   <div className={`sfr-flex sfr-justify-center sfr-align-center sfr-mb-28 `}>
     <img
       src="https://placehold.co/600x400"
@@ -29,9 +29,11 @@ const CustomTextComponent: React.FC = () => (
   </div>
 );
 
-const SimpleExampleTextComponent: React.FC<
-  AdFeatureOptions & { title: string; description: string }
-> = ({ isIntersecting, title, description }) => (
+const SimpleExampleTextComponent: React.FC<{
+  title: string;
+  description: string;
+  isIntersecting: boolean;
+}> = ({ isIntersecting, title, description }) => (
   <>
     {/* Title */}
     <h4
@@ -61,9 +63,10 @@ const SimpleExampleTextComponent: React.FC<
   </>
 );
 
-const SimpleExampleImageComponent: React.FC<
-  AdFeatureOptions & { imageUrl: string }
-> = ({ imageUrl }) => (
+const SimpleExampleImageComponent: React.FC<{
+  imageUrl: string;
+  isIntersecting: boolean;
+}> = ({ imageUrl }) => (
   <div className="sfr-bg-gray-50 sfr-border sfr-border-gray-200 sfr-p-8 sfr-rounded-md sfr-flex sfr-justify-center sfr-items-start">
     <img className="sfr-w-48 sfr-object-contain lg:sfr-w-64" src={imageUrl} />
   </div>
@@ -88,7 +91,7 @@ function App() {
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
-          key="test"
+          key="custom-example"
           trackingBall={
             <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-red-500 sfr-ring">
               <div className="sfr-bg-red-500 sfr-w-full sfr-h-full sfr-rounded-full"></div>
@@ -130,7 +133,7 @@ function App() {
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
-          key="test3"
+          key="basic-example"
           features={[
             {
               scrollingItem: ({ isIntersecting }) => (
@@ -143,6 +146,21 @@ function App() {
                 <SimpleExampleTextComponent
                   isIntersecting={isIntersecting}
                   title="Example awesome feature 1"
+                  description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
+                />
+              ),
+            },
+            {
+              scrollingItem: ({ isIntersecting }) => (
+                <SimpleExampleImageComponent
+                  isIntersecting={isIntersecting}
+                  imageUrl="https://placehold.co/800x500"
+                />
+              ),
+              fixedItem: ({ isIntersecting }) => (
+                <SimpleExampleTextComponent
+                  isIntersecting={isIntersecting}
+                  title="Example awesome feature 2"
                   description="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio aperiam libero pariatur debitis rerum corporis quae iure ea id maxime velit necessitatibus reprehenderit earum, autem saepe sapiente nulla placeat sint?"
                 />
               ),
@@ -161,7 +179,7 @@ function App() {
       </h1>
       <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
         <ScrollingFeatures
-          key="test2"
+          key="another-basic-example"
           features={[
             {
               scrollingItem: ({ isIntersecting }) => (

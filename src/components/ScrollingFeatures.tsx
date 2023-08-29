@@ -4,7 +4,7 @@ import "../index.css";
 
 // TODO: Add prop for line and ball color
 type Props = {
-  features?: AdFeature[];
+  features: AdFeature[];
   trackingBall?: ReactNode;
   trackingLineColor?: string;
   lineTrail?: ReactNode;
