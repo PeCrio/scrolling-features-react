@@ -39,7 +39,7 @@ export const FeatureItem: React.FC<Props> = ({
         style={{ backgroundColor: trackingLineColor }}
         className={`${
           isIntersecting ? "sfr-h-full" : "sfr-h-0"
-        } sfr-w-[2px] sfr-translate-x-[-0.5px] sfr-z-10 sfr-absolute sfr-top-0 sfr-left-0 sfr-block lg:sfr-hidden sfr-transition sfr-origin-top sfr-transform sfr-duration-700`}
+        } sfr-w-[2px] -sfr-translate-x-[50%] sfr-z-10 sfr-absolute sfr-top-0 sfr-left-0 sfr-block lg:sfr-hidden sfr-transition sfr-origin-top sfr-transform sfr-duration-700`}
       ></div>
       {/* Feature indicator */}
       <div className="sfr-absolute sfr-z-10 sfr-w-full">

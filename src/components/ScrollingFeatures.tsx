@@ -7,13 +7,15 @@ type Props = {
   features: AdFeature[];
   trackingBall?: ReactNode;
   trackingLineColor?: string;
+  trackingLineFadeColor?: string;
   lineTrail?: ReactNode;
 };
 
 export const ScrollingFeatures: React.FC<Props> = ({
   features = [],
   trackingBall: customTrackingBall,
-  trackingLineColor = "blue",
+  trackingLineFadeColor = "white",
+  trackingLineColor = "purple",
   lineTrail: customLineTrail,
 }) => {
   const [intersectingEntries, setIntersectingEntries] = useState<
@@ -99,7 +101,12 @@ export const ScrollingFeatures: React.FC<Props> = ({
           )}
         </div>
         {/* Beginning tracking line mask */}
-        <div className="sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-from-white sfr-via-white sfr-to-transparent sfr-via-[85%] sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]"></div>
+        <div
+          className={`sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]`}
+          style={{
+            background: `linear-gradient(${trackingLineFadeColor} 75%, transparent)`,
+          }}
+        ></div>
         {/* Desktop tracking line */}
         <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10">
           <div
@@ -121,7 +128,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
           )}
         </div>
         {/* Feature listing */}
-        <div className="-sfr-mt-4">
+        <div className="-sfr-mt-7">
           {featureList &&
             featureList.map((feature) => (
               <FeatureItem
