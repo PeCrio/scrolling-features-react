@@ -68,12 +68,13 @@ Description: An array of objects that contain all features to be displayed in a 
 
 ### Prop definitions
 
-| Prop                | Type    | Specific      | Required | Description                                          |
-| ------------------- | ------- | ------------- | -------- | ---------------------------------------------------- |
-| `features`          | Array   | `AdFeature[]` | `true`   | List of items to be displayed                        |
-| `trackingBall`      | Element | `ReactNode`   | `false`  | The ball that follows the top of the screen          |
-| `trackingLineColor` | string  | `string`      | `false`  | Highlight color of the active section                |
-| `lineTrail`         | Element | `ReactNode`   | `false`  | The center line for desktop and left line for mobile |
+| Prop                    | Type    | Specific      | Required | Description                                                                                   |
+| ----------------------- | ------- | ------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `features`              | Array   | `AdFeature[]` | `true`   | List of items to be displayed                                                                 |
+| `trackingBall`          | Element | `ReactNode`   | `false`  | The ball that follows the top of the screen                                                   |
+| `trackingLineColor`     | string  | `string`      | `false`  | Highlight color of the active section                                                         |
+| `trackingLineFadeColor` | string  | `string`      | `false`  | Ideally the background color, helps add a fading effect to the beginning of the tracking line |
+| `lineTrail`             | Element | `ReactNode`   | `false`  | The center line for desktop and left line for mobile                                          |
 
 ### Type definitions
 
@@ -134,7 +135,6 @@ const SimpleExampleImageComponent: React.FC<{
 
 export const SimpleExampleImplementation: React.FC() => (
       <ScrollingFeatures
-        key="basic-example"
         features={[
           {
             scrollingItem: ({ isIntersecting }) => (
