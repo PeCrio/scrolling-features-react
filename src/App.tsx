@@ -76,8 +76,8 @@ const SimpleCustomIndicator: React.FC<{ isIntersecting: boolean }> = ({
   isIntersecting,
 }) => (
   <div
-    className={`-sfr-translate-x-[50%] lg:sfr-translate-x-0 sfr-p-1 sfr-rounded-full sfr-bg-[#1B1F24] ${
-      isIntersecting && "sfr-border-2 sfr-border-[#4c3791]"
+    className={`-sfr-translate-x-[50%] lg:sfr-translate-x-0 sfr-p-1 sfr-rounded-full sfr-bg-tertiary ${
+      isIntersecting && "sfr-border-2 sfr-border-primary"
     }`}
   >
     <svg
@@ -93,12 +93,12 @@ const SimpleCustomIndicator: React.FC<{ isIntersecting: boolean }> = ({
 function App() {
   return (
     <div className="App">
-      <div className="sfr-bg-gradient-to-b sfr-from-[#2C2447] sfr-to-[#1B1F24]">
-        <div className="sfr-pt-64 sfr-pb-20">
-          <h1 className="sfr-text-7xl sfr-text-center sfr-font-bold sfr-text-white sfr-drop-shadow-md">
+      <div className="sfr-bg-gradient-to-b sfr-from-secondary sfr-to-tertiary ">
+        <div className="sfr-pt-32 sfr-pb-20 sfr-container sfr-px-4 sfr-mx-auto">
+          <h1 className="sfr-text-4xl lg:sfr-text-7xl sfr-text-center sfr-font-bold sfr-text-white sfr-drop-shadow-md">
             Scrolling features react
           </h1>
-          <div className="sfr-flex sfr-space-x-8 sfr-justify-center sfr-mt-8 sfr-text-[rgba(255,255,255,0.6)] sfr-text-lg">
+          <div className="sfr-flex sfr-space-x-8 sfr-justify-center sfr-mt-8 sfr-text-[rgba(255,255,255,0.6)] lg:sfr-text-lg">
             <a
               target="_blank"
               rel="noopener noreferrer"
@@ -125,17 +125,17 @@ function App() {
             </a>
           </div>
         </div>
-        <div className="sfr-max-w-4xl sfr-container sfr-px-4 sfr-mx-auto sfr-rounded-lg sfr-overflow-none sfr-bg-[rgba(0,0,0,0.5)] sfr-py-4 sfr-border-4 sfr-border-gray-700">
+        <div className="sfr-max-w-4xl sfr-px-4 sfr-mx-auto sfr-rounded-lg sfr-overflow-none sfr-bg-[rgba(0,0,0,0.5)] sfr-py-4 sfr-border-4 sfr-border-gray-700 sfr-container">
           <img src="/preview.gif" alt="" className="sfr-w-full sfr-rounded" />
         </div>
       </div>
-      <div className="sfr-bg-[#1B1F24] sfr-pt-48">
+      <div className="sfr-bg-tertiary sfr-pt-48 sfr-px-4">
         <div className="sfr-container sfr-flex sfr-justify-center sfr-mx-auto">
           <div className="sfr-text-center sfr-mb-14 sfr-max-w-md">
-            <h1 className="sfr-text-gray-200 sfr-text-5xl sfr-font-bold">
+            <h1 className="sfr-text-gray-200 sfr-text-3xl lg:sfr-text-5xl sfr-font-bold">
               Customization
             </h1>
-            <p className="sfr-text-[rgba(255,255,255,0.6)] sfr-text-xl sfr-mt-4">
+            <p className="sfr-text-[rgba(255,255,255,0.6)] lg:sfr-text-xl sfr-mt-4">
               This package comes with customizable options and props to extend
               for different use-cases
             </p>
@@ -143,9 +143,10 @@ function App() {
         </div>
         <div className="sfr-px-4 md:sfr-px-8 lg:sfr-px-8">
           <ScrollingFeatures
+            key="custom-example"
             trackingBall={
-              <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-[#4c3791] sfr-ring">
-                <div className="sfr-bg-[#4c3791] sfr-w-full sfr-h-full sfr-rounded-full"></div>
+              <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-primary sfr-ring">
+                <div className="sfr-bg-primary sfr-w-full sfr-h-full sfr-rounded-full"></div>
               </div>
             }
             lineTrail={
@@ -206,7 +207,7 @@ function App() {
                       <button
                         className={`sfr-text-white sfr-px-3 sfr-py-1 sfr-rounded-md sfr-mt-4 sfr-text-sm ${
                           isIntersecting
-                            ? "sfr-bg-[#4c3791]"
+                            ? "sfr-bg-primary"
                             : "sfr-bg-[rgba(255,255,255,0.2)]"
                         }`}
                       >
@@ -228,7 +229,7 @@ function App() {
                         </h3>
                         <div className="sfr-flex sfr-justify-center sfr-items-center sfr-border sfr-border-[rgba(255,255,255,0.3)] sfr-p-4 sfr-rounded-md sfr-space-x-8 sfr-mt-4">
                           <div
-                            className={`sfr-bg-[#4c3791] sfr-w-6 sfr-h-6 sfr-border-4 sfr-rounded-full sfr-ring sfr-ring-[#4c3791] sfr-border-gray-900`}
+                            className={`sfr-bg-primary sfr-w-6 sfr-h-6 sfr-border-4 sfr-rounded-full sfr-ring sfr-ring-primary sfr-border-gray-900`}
                           ></div>
                           <svg
                             height="24"
@@ -260,7 +261,7 @@ function App() {
                       <button
                         className={`sfr-text-white sfr-px-3 sfr-py-1 sfr-rounded-md sfr-mt-4 sfr-text-sm ${
                           isIntersecting
-                            ? "sfr-bg-[#4c3791]"
+                            ? "sfr-bg-primary"
                             : "sfr-bg-[rgba(255,255,255,0.2)]"
                         }`}
                       >
@@ -312,12 +313,6 @@ function App() {
               ),
             },
           ]}
-          trackingBall={
-            <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring">
-              <div className="sfr-bg-blue-500 sfr-w-full sfr-h-full sfr-rounded-full"></div>
-            </div>
-          }
-          trackingLineColor="blue"
         />
       </div>
     </div>

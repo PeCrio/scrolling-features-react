@@ -2,7 +2,6 @@ import React, { ReactNode, useEffect, useRef, useState } from "react";
 import { FeatureItem, AdFeature, FeatureListItem } from "./FeatureItem";
 import "../index.css";
 
-// TODO: Add prop for line and ball color
 type Props = {
   features: AdFeature[];
   trackingBall?: ReactNode;
@@ -14,8 +13,8 @@ type Props = {
 export const ScrollingFeatures: React.FC<Props> = ({
   features = [],
   trackingBall: customTrackingBall,
-  trackingLineFadeColor = "white",
-  trackingLineColor = "purple",
+  trackingLineFadeColor,
+  trackingLineColor = "blue",
   lineTrail: customLineTrail,
 }) => {
   const [intersectingEntries, setIntersectingEntries] = useState<
@@ -37,8 +36,6 @@ export const ScrollingFeatures: React.FC<Props> = ({
     }
     return result;
   };
-
-  // TODO: Consider adding a script to check if scrolled to the bottom to show all features
 
   const handleFeatureScrolling = () => {
     const trackingBallElementTop =
@@ -101,12 +98,14 @@ export const ScrollingFeatures: React.FC<Props> = ({
           )}
         </div>
         {/* Beginning tracking line mask */}
-        <div
-          className={`sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]`}
-          style={{
-            background: `linear-gradient(${trackingLineFadeColor} 75%, transparent)`,
-          }}
-        ></div>
+        {trackingLineFadeColor && (
+          <div
+            className={`sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]`}
+            style={{
+              background: `linear-gradient(${trackingLineFadeColor} 75%, transparent)`,
+            }}
+          ></div>
+        )}
         {/* Desktop tracking line */}
         <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10">
           <div
