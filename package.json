@@ -6,6 +6,24 @@
     "email": "theossaiprecious@gmail.com",
     "url": "https://ossaiprecious.com"
   },
+  "keywords": [
+    "react",
+    "scrolling animation",
+    "scrolling features",
+    "feature listing",
+    "landing page",
+    "scrolling",
+    "journey"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeCrio/scrolling-features-react.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PeCrio/scrolling-features-react/issues"
+  },
+  "homepage": "https://github.com/PeCrio/scrolling-features-react#readme",
+  "license": "MIT",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/index.umd.js",
