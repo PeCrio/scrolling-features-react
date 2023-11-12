@@ -94,7 +94,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
 
   return (
     <div id="package-mask">
-      <div className="sfr-relative sfr-isolate sfr-z-0 lg:-sfr-mt-48">
+      <div className="sfr-relative sfr-isolate sfr-z-0">
         {/* Line trail */}
         <div className="sfr-flex lg:sfr-justify-center -sfr-z-10 sfr-w-full sfr-h-full sfr-absolute sft-top-0 ">
           {customLineTrail ? (
@@ -111,44 +111,53 @@ export const ScrollingFeatures: React.FC<Props> = ({
           )}
         </div>
         {/* Beginning tracking line mask */}
-        {trackingLineFadeColor && (
+        {/* {trackingLineFadeColor && (
           <div
             className={`sfr-bg-gradient-to-b sfr-hidden lg:sfr-block sfr-top-0 sfr-inset-x-0 sfr-h-64 sfr-absolute sfr-w-[4px] sfr-translate-x-[-2px] lg:sfr-left-[50%]`}
             style={{
               background: `linear-gradient(${trackingLineFadeColor} 75%, transparent)`,
             }}
           ></div>
-        )}
-        {/* Desktop tracking line */}
-        <div
-          className={`sfr-sticky lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10 ${
-            showAll ? "sfr-top-0" : "sfr-top-0"
-          }`}
-        >
+        )} */}
+        <div className="sfr-fixed sfr-h-full sfr-w-full sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-0">
           <div
-            className="sfr-w-[2px] sfr-h-64"
-            style={{ backgroundColor: trackingLineColor }}
-          ></div>
-        </div>
-        {/* Tracking ball */}
-        <div
-          ref={trackingBallRef}
-          className={`sfr-z-20 sfr-sticky lg:sfr-flex sfr-invisible lg:sfr-visible sfr-justify-center sfr-transform sfr-transition-all sfr-duration-700 ${
-            showAll
-              ? "lg:sfr-top-[100%] lg:sfr-w-full"
-              : "sfr-top-[37%] lg:sfr-top-64"
-          }`}
-        >
-          {customTrackingBall ? (
-            customTrackingBall
-          ) : (
-            <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring">
-              <div id="ball"></div>
+            className={`sfr-top-0 sfr-w-full sfr-flex lg:sfr-justify-center sfr-sticky -sfr-mt-[40vh]`}
+          >
+            {/* Desktop tracking line */}
+            <div
+              className={`lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center sfr-sticky
+            `}
+            >
+              <div
+                className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 ${
+                  showAll ? "sfr-h-[100vh]" : "sfr-h-[40vh]"
+                }`}
+                style={{ backgroundColor: trackingLineColor }}
+              ></div>
             </div>
-          )}
+          </div>
+        </div>
+        <div className="sfr-fixed sfr-h-full sfr-w-full sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-10">
+          {/* Tracking ball */}
+          <div className="sfr-absolute sfr-inset-y-0">
+            <div
+              ref={trackingBallRef}
+              className={`sfr-sticky lg:sfr-flex lg:sfr-visible sfr-justify-center sfr-self-center sfr-transform sfr-transition-all sfr-duration-1000 sfr-top-[37%] ${
+                showAll ? "lg:sfr-top-[100vh]" : " lg:sfr-top-[40vh]"
+              }`}
+            >
+              {customTrackingBall ? (
+                customTrackingBall
+              ) : (
+                <div className="sfr-w-7 sfr-h-7 sfr-rounded-full sfr-border-2 sfr-border-white sfr-ring-blue-500 sfr-ring">
+                  <div id="ball"></div>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
         {/* Feature listing */}
-        <div className="-sfr-mt-7">
+        <div>
           {featureList &&
             featureList.map((feature) => (
               <FeatureItem
