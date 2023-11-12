@@ -20,13 +20,15 @@ type Props = {
   intersectingEntries?: Record<string, boolean>;
   feature: FeatureListItem;
   trackingLineColor: string;
+  showAll: boolean;
 };
 export const FeatureItem: React.FC<Props> = ({
   intersectingEntries,
   feature,
   trackingLineColor,
+  showAll,
 }) => {
-  const isIntersecting = !!intersectingEntries?.[feature.id];
+  const isIntersecting = showAll || !!intersectingEntries?.[feature.id];
 
   return (
     <div
@@ -74,6 +76,17 @@ export const FeatureItem: React.FC<Props> = ({
           }
           `}
         >
+          {/* <div
+          className={`
+          sfr-transition sfr-duration-300 sfr-sticky sfr-top-64 group-last:sfr-mb-0 sfr-z-20 sfr-ml-6 lg:sfr-ml-0 sfr-mb-16
+          ${
+            isIntersecting
+              ? "sfr-opacity-100 sfr-scale-100"
+              : "lg:sfr-opacity-0 lg:sfr-scale-50"
+          }
+          ${!showAll && "lg:-sfr-mb-96"}
+          `}
+        > */}
           {feature.scrollingItem({ isIntersecting })}
         </div>
       </div>

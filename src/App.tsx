@@ -169,6 +169,19 @@ function App() {
                 ),
                 indicator: SimpleCustomIndicator,
               },
+              {
+                scrollingItem: () => (
+                  <SimpleExampleImageComponent title="Scrolling item 3" />
+                ),
+                fixedItem: ({ isIntersecting }) => (
+                  <CustomTextComponent
+                    title="Fixed item 3"
+                    description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem quo distinctio necessitatibus consequatur porro aperiam nobis, esse illum labore repellendus molestias iusto facilis sunt, maiores voluptates. Dolor accusamus ipsa autem!"
+                    isIntersecting={isIntersecting}
+                  />
+                ),
+                indicator: SimpleCustomIndicator,
+              },
             ]}
           />
         </div>

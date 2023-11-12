@@ -22,6 +22,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
   >({});
 
   const [featureList, setFeatureList] = useState<FeatureListItem[]>([]);
+  const [showAll, setShowAll] = useState(false);
   const trackingBallRef = useRef<HTMLDivElement>(null);
 
   const generateId = () => {
@@ -41,20 +42,32 @@ export const ScrollingFeatures: React.FC<Props> = ({
     const trackingBallElementTop =
       trackingBallRef?.current?.getBoundingClientRect().top ?? 700;
 
-    document
-      .querySelectorAll("#sfr-feature-list-item")
-      .forEach((featureElement) => {
-        const featureElementTop = featureElement.getBoundingClientRect().top;
-        const featureId = featureElement.getAttribute(
-          "data-feature-id"
-        ) as string;
+    const scrollableHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
 
-        if (trackingBallElementTop >= featureElementTop) {
-          setIntersectingEntries({
-            [featureId]: true,
-          });
-        }
-      });
+    const scrollingFeatureItems = document.querySelectorAll(
+      "#sfr-feature-list-item"
+    );
+
+    scrollingFeatureItems.forEach((featureElement) => {
+      const featureElementTop = featureElement.getBoundingClientRect().top;
+      const featureId = featureElement.getAttribute(
+        "data-feature-id"
+      ) as string;
+
+      if (window.scrollY >= scrollableHeight) {
+        setShowAll(true);
+        setIntersectingEntries((prevItems) => ({
+          ...prevItems,
+          [featureId]: true,
+        }));
+      } else if (trackingBallElementTop >= featureElementTop) {
+        setShowAll(false);
+        setIntersectingEntries({
+          [featureId]: true,
+        });
+      }
+    });
   };
 
   useEffect(() => {
@@ -107,7 +120,11 @@ export const ScrollingFeatures: React.FC<Props> = ({
           ></div>
         )}
         {/* Desktop tracking line */}
-        <div className="sfr-sticky sfr-top-0 lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10">
+        <div
+          className={`sfr-sticky lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center -sfr-z-10 ${
+            showAll ? "sfr-top-0" : "sfr-top-0"
+          }`}
+        >
           <div
             className="sfr-w-[2px] sfr-h-64"
             style={{ backgroundColor: trackingLineColor }}
@@ -116,7 +133,11 @@ export const ScrollingFeatures: React.FC<Props> = ({
         {/* Tracking ball */}
         <div
           ref={trackingBallRef}
-          className="sfr-z-20 sfr-sticky sfr-top-[37%] lg:sfr-top-64 lg:sfr-flex sfr-invisible lg:sfr-visible sfr-justify-center"
+          className={`sfr-z-20 sfr-sticky lg:sfr-flex sfr-invisible lg:sfr-visible sfr-justify-center sfr-transform sfr-transition-all sfr-duration-700 ${
+            showAll
+              ? "lg:sfr-top-[100%] lg:sfr-w-full"
+              : "sfr-top-[37%] lg:sfr-top-64"
+          }`}
         >
           {customTrackingBall ? (
             customTrackingBall
@@ -135,6 +156,7 @@ export const ScrollingFeatures: React.FC<Props> = ({
                 feature={feature}
                 intersectingEntries={intersectingEntries}
                 trackingLineColor={trackingLineColor}
+                showAll={showAll}
               ></FeatureItem>
             ))}
         </div>
