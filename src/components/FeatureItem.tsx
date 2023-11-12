@@ -70,13 +70,13 @@ export const FeatureItem: React.FC<Props> = ({
       >
         <div
           className={`
-          sfr-transition sfr-duration-500 sfr-ease-in-out sfr-mb-16 group-last:sfr-mb-0 sfr-z-20 sfr-ml-6 lg:sfr-ml-0
+          sfr-transition sfr-duration-700 sfr-ease-in-out sfr-mb-16 group-last:sfr-mb-0 sfr-z-20 sfr-ml-6 lg:sfr-ml-0
           ${
             isIntersecting
-              ? "sfr-opacity-100 sfr-scale-100"
-              : "lg:sfr-opacity-0 lg:sfr-scale-50 sfr-blur-md"
+              ? "sfr-opacity-100 sfr-scale-100 sfr-blur-0"
+              : "lg:sfr-opacity-0 lg:sfr-scale-50 lg:sfr-blur-md"
           }
-          ${!showAll && "lg:sfr-sticky lg:sfr-top-[37vh]"}
+          ${!showAll && "lg:sfr-sticky lg:sfr-top-[40vh]"}
           `}
         >
           {feature.scrollingItem({ isIntersecting })}
