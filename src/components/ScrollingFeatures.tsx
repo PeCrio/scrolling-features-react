@@ -119,9 +119,9 @@ export const ScrollingFeatures: React.FC<Props> = ({
             }}
           ></div>
         )} */}
-        <div className="sfr-fixed sfr-h-full sfr-w-full sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-0">
+        <div className="sfr-fixed sfr-h-full sfr-w-full lg:sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-0">
           <div
-            className={`sfr-top-0 sfr-w-full sfr-flex lg:sfr-justify-center sfr-sticky -sfr-mt-[40vh]`}
+            className={`sfr-top-0 sfr-w-full sfr-flex lg:sfr-justify-center sfr-sticky -sfr-mt-[37vh]`}
           >
             {/* Desktop tracking line */}
             <div
@@ -130,20 +130,20 @@ export const ScrollingFeatures: React.FC<Props> = ({
             >
               <div
                 className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 ${
-                  showAll ? "sfr-h-[100vh]" : "sfr-h-[40vh]"
+                  showAll ? "sfr-h-[100vh]" : "sfr-h-[37vh]"
                 }`}
                 style={{ backgroundColor: trackingLineColor }}
               ></div>
             </div>
           </div>
         </div>
-        <div className="sfr-fixed sfr-h-full sfr-w-full sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-10">
+        <div className="lg:sfr-fixed sfr-h-full sfr-w-full lg:sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-20">
           {/* Tracking ball */}
-          <div className="sfr-absolute sfr-inset-y-0">
+          <div className="sfr-absolute sfr-h-full sfr-z-20">
             <div
               ref={trackingBallRef}
-              className={`sfr-sticky lg:sfr-flex lg:sfr-visible sfr-justify-center sfr-self-center sfr-transform sfr-transition-all sfr-duration-1000 sfr-top-[37%] ${
-                showAll ? "lg:sfr-top-[100vh]" : " lg:sfr-top-[40vh]"
+              className={`sfr-sticky lg:sfr-flex lg:sfr-visible sfr-invisible sfr-justify-center sfr-self-center sfr-transform sfr-transition-all sfr-duration-1000 sfr-top-[20vh] -sfr-translate-x-[50%] lg:sfr-translate-x-0 ${
+                showAll ? "lg:sfr-top-[100vh]" : " lg:sfr-top-[37vh]"
               }`}
             >
               {customTrackingBall ? (
