@@ -76,7 +76,7 @@ export const FeatureItem: React.FC<Props> = ({
               ? "sfr-opacity-100 sfr-scale-100 sfr-blur-0"
               : "lg:sfr-opacity-0 lg:sfr-scale-50 lg:sfr-blur-md"
           }
-          ${!showAll && "lg:sfr-sticky lg:sfr-top-[40vh]"}
+          ${!showAll && "lg:sfr-sticky lg:sfr-top-64"}
           `}
         >
           {feature.scrollingItem({ isIntersecting })}
