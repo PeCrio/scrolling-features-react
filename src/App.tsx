@@ -7,11 +7,7 @@ const SimpleExampleImageComponent: React.FC<{
 }> = ({ title }) => (
   <div className="sfr-flex lg:sfr-justify-end">
     <div className="sfr-bg-[rgba(255,255,255,0.05)] sfr-grid sfr-place-items-center sfr-h-64 sfr-max-w-lg sfr-w-full sfr-border-[rgba(255,255,255,0.2)] sfr-border sfr-rounded">
-      <div>
-        <h3 className="sfr-text-2xl sfr-text-[rgba(255,255,255,0.5)]">
-          {title}
-        </h3>
-      </div>
+      <h3 className="sfr-text-2xl sfr-text-[rgba(255,255,255,0.5)]">{title}</h3>
     </div>
   </div>
 );
@@ -188,15 +184,6 @@ function App() {
       </div>
       <div className="lg:sfr-pb-96 lg:sfr-pt-32 sfr-pb-16">
         <div className="sfr-container sfr-mx-auto">
-          {/* <div className="sfr-text-center sfr-mb-14 sfr-max-w-md sfr-relative sfr-flex sfr-flex-col">
-            <h1 className="sfr-text-gray-200 sfr-text-3xl lg:sfr-text-5xl sfr-font-bold">
-              Props and options
-            </h1>
-            <p className="sfr-text-[rgba(255,255,255,0.6)] lg:sfr-text-xl sfr-mt-4">
-              This package comes with customizable options and props to extend
-              for different use-cases
-            </p>
-          </div> */}
           <div className="sfr-container sfr-flex sfr-justify-center sfr-mx-auto ">
             <div className="sfr-text-center lg:sfr-mb-14 sfr-max-w-2xl sfr-relative sfr-p-4 lg:sfr-p-16 sfr-flex sfr-flex-col">
               <div className="sfr-mb-4">
@@ -242,7 +229,7 @@ function App() {
           </div>
         </div>
       </div>
-      <footer className="sfr-container sfr-mx-auto sfr-py-4 sfr-border-t sfr-border-[rgba(255,255,255,0.3)]">
+      <footer className="sfr-container sfr-mx-auto sfr-py-4 sfr-px-4 sfr-border-t sfr-border-[rgba(255,255,255,0.3)]">
         <div className="sfr-flex sfr-justify-between sfr-text-[rgba(255,255,255,0.7)] sfr-text-sm">
           <p>Copyright &copy 2023</p>
           <a
