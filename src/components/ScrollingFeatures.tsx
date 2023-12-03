@@ -126,7 +126,9 @@ export const ScrollingFeatures: React.FC<Props> = ({
               {/* Desktop tracking line */}
               <div className="lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center">
                 <div
-                  className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 sfr-h-64`}
+                  className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 ${
+                    showAll ? "sfr-h-[1000px]" : "sfr-h-64"
+                  }`}
                   style={{ backgroundColor: trackingLineColor }}
                 ></div>
               </div>
