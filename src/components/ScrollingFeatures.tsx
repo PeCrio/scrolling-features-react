@@ -88,6 +88,12 @@ export const ScrollingFeatures: React.FC<Props> = ({
     };
   }, []);
 
+  const lastItemIsIntersecting =
+    featureList.length &&
+    Object.keys(intersectingEntries).includes(
+      featureList[featureList.length - 1].id
+    );
+
   if (!features.length) {
     return null;
   }
@@ -118,15 +124,24 @@ export const ScrollingFeatures: React.FC<Props> = ({
               className={`sfr-top-0 sfr-w-full sfr-flex lg:sfr-justify-center sfr-sticky -sfr-mt-64`}
             >
               {/* Desktop tracking line */}
-              <div className="lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center sfr-sticky">
+              <div className="lg:sfr-flex sfr-hidden lg:sfr-visible lg:sfr-justify-center">
                 <div
-                  className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 ${
-                    showAll ? "sfr-h-[100vh]" : "sfr-h-64"
-                  }`}
+                  className={`sfr-w-[2px] sfr-transform sfr-transition-all sfr-duration-1000 sfr-h-64`}
                   style={{ backgroundColor: trackingLineColor }}
                 ></div>
               </div>
             </div>
+          </div>
+          {/* Blur bottom */}
+          <div className="sfr-inset-0 lg:sfr-absolute sfr-w-full lg:sfr-items-end lg:sfr-flex lg:sfr-justify-center sfr-z-20">
+            <div
+              style={{
+                background: `linear-gradient(transparent 50%,  ${
+                  lastItemIsIntersecting ? "transparent" : trackingLineFadeColor
+                })`,
+              }}
+              className="sfr-h-20 sfr-bottom-0 lg:sfr-sticky sfr-w-full sfr-bg-red-500"
+            ></div>
           </div>
           <div className="sfr-inset-0 lg:sfr-absolute sfr-h-full sfr-w-full lg:sfr-items-start lg:sfr-flex lg:sfr-justify-center sfr-z-20">
             {/* Tracking ball */}
