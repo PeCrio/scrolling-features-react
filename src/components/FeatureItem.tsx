@@ -58,7 +58,7 @@ export const FeatureItem: React.FC<Props> = ({
                   isIntersecting
                     ? " sfr-ring-blue-500 sfr-ring sfr-bg-blue-500"
                     : " sfr-bg-gray-300"
-                } sfr-transition sfr-duration-300 sfr-w-4 sfr-h-4 sfr-rounded-full sfr-border-2 sfr-border-white lg:sfr-translate-x-0 -sfr-translate-x-[50%]`}
+                } sfr-transition sfr-duration-700 sfr-w-4 sfr-h-4 sfr-rounded-full sfr-border-2 sfr-border-white lg:sfr-translate-x-0 -sfr-translate-x-[50%]`}
               ></div>
             </>
           )}
