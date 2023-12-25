@@ -104,7 +104,7 @@ function App() {
       </div>
       <footer className="sfr-container sfr-mx-auto sfr-py-4 sfr-px-4 sfr-border-t sfr-border-[rgba(255,255,255,0.3)]">
         <div className="sfr-flex sfr-justify-between sfr-text-[rgba(255,255,255,0.7)] sfr-text-sm">
-          <p>Copyright &copy 2023</p>
+          <p>Copyright &copy; 2023</p>
           <a
             href="https://ossaiprecious.com"
             target="_blank"
