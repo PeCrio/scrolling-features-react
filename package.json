@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/PeCrio/scrolling-features-react#readme",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "type": "module",
   "main": "dist/index.umd.js",
   "module": "dist/index.es.js",
